@@ -7,7 +7,7 @@ import parseDataFromJson from './setupData';
 
 let server;
 const app = express();
-const { BB_PORT: port = '5000', NODE_ENV: env = 'development' } = process.env;
+const { BB_PORT: port = '5001', NODE_ENV: env = 'development' } = process.env;
 
 server = http.createServer(app);
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -21,12 +21,16 @@ parseDataFromJson()
     app.use('/api', controllers);
 
     app.get('/*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client/build/index.html'));
+      res.send(' Please use Apis for Create/Query/Attach Dist');
     });
-
     if (env !== 'test') {
-      server.listen(port, () => {
-        console.log(`Started on port ${server.address().port} in ${env} mode`);
+      server.listen(port, err => {
+        if (err) {
+          console.error(err);
+        } else
+          console.log(
+            `Started on port ${server.address().port} in ${env} mode`
+          );
       });
     }
   })

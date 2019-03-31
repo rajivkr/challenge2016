@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "c6ca8056-926f-4bbd-91e6-a9bdc11a0d35",
+		"name": "Qube Question",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"rajiv\",\n    \"includes\" : \"IN,ID\",\n    \"excludes\" : \"ZHEAB-TG-IN\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/dist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"dist",
+						"create"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Dist Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"dhee\",\n    \"includes\" : \"TN-IN\",\n    \"excludes\":\"VRHLA-TN-IN\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/dist/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"dist",
+						"create"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Relate Dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"relatedDists\" : \"dhee<rajiv\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/dist/relate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"dist",
+						"relate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by Distributor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"rajiv\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/dist/find",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"dist",
+						"find"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		},
+		{
+			"name": "Query Dist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"rajiv\",\n    \"place\" : \"TN-IN\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/api/dist/query",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"dist",
+						"query"
+					]
+				},
+				"description": "\t"
+			},
+			"response": []
+		}
+	]
+}

@@ -6,7 +6,7 @@ import {
   getDistFromSeq
 } from '../helpers/utils';
 
-export default class DistributorEntity {
+class DistributorEntity {
   getDistributorList() {
     return Object.keys(Distributors).length === 0 ? null : Distributors;
   }
@@ -24,7 +24,7 @@ export default class DistributorEntity {
       return 'N';
     }
 
-    if (!this.distributorPresent(distributor)) {
+    if (!this.isDistributorPresent(distributor)) {
       return 'N';
     }
 
@@ -36,7 +36,7 @@ export default class DistributorEntity {
       distIncludes.map(includedPlace => {
         if (isHierarchyValid(place, includedPlace)) temp = true;
       });
-      if (temp) {
+      if (temp === false) {
         return 'N';
       }
     }
@@ -84,7 +84,7 @@ export default class DistributorEntity {
   }
 
   attachDistributors(d2, d1) {
-    if (!this.distributorPresent(d1) || !this.distributorPresent(d2)) {
+    if (!this.isDistributorPresent(d1) || !this.isDistributorPresent(d2)) {
       return false;
     }
     const dist1 = this.getDistributor(d1);
@@ -120,8 +120,12 @@ export default class DistributorEntity {
       }
       tempDistObj = tempDistObj.parent;
     }
-    dist1.children.push(dist2);
     dist2.parent = dist1;
+    dist1.childDists.push(dist2);
     return true;
   }
 }
+
+// Singelton pattern
+const distributor = new DistributorEntity();
+export default distributor;
